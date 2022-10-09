@@ -1,11 +1,35 @@
-import React, { useState, useEffect } from 'react'
-import Loading from './Loading'
-import Tours from './Tours'
+import React, { useState, useEffect } from "react";
+import Loading from "./Loading";
+import Tour from "./Tour";
+import Tours from "./Tours";
 // ATTENTION!!!!!!!!!!
 // I SWITCHED TO PERMANENT DOMAIN
-const url = 'https://course-api.com/react-tours-project'
+const url = "https://course-api.com/react-tours-project";
 function App() {
-  return <h2>Tours Project Setup</h2>
+  const [isLoading, setIsLoading] = useState(false);
+  const [tours, setTours] = React.useState([]);
+  React.useEffect(function () {
+    setIsLoading(true);
+    fetch(url)
+      .then((res) => res.json())
+      .then((data) => setTours(data));
+    setIsLoading(false);
+    console.log(tours);
+  }, []);
+  console.log(tours);
+
+  if (isLoading) {
+    return (
+      <main>
+        <Loading />
+      </main>
+    );
+  }
+  return (
+    <main>
+      <Tours tours={tours} />
+    </main>
+  );
 }
 
-export default App
+export default App;
