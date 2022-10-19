@@ -7,7 +7,11 @@ function App() {
   const [color, setColor] = useState("");
   const [error, setError] = useState(false);
   const [list, setList] = useState();
-  function handleSubmit() {}
+  function handleSubmit(e) {
+    e.preventDefault();
+    let colors = new Values(color).all(10);
+    console.log(colors);
+  }
   return (
     <>
       <section className="container">
@@ -17,7 +21,7 @@ function App() {
             type="text"
             value={color}
             id=""
-            placeholder="#a231687"
+            placeholder="#A52A2A"
             onChange={(e) => setColor(e.target.value)}
           />
           <label htmlFor=""></label>
@@ -26,7 +30,7 @@ function App() {
           </button>
         </form>
       </section>
-      <section className="color"></section>
+      <section className="colors">list goes here</section>
     </>
   );
 }
