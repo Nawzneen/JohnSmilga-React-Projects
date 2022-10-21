@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import SingleColor from "./SingleColor";
-
 import Values from "values.js";
 
 function App() {
@@ -18,7 +17,7 @@ function App() {
     }
   }
   return (
-    <>
+    <div>
       <section className="container">
         <h3>color generator</h3>
         <form action="" onSubmit={handleSubmit}>
@@ -48,7 +47,7 @@ function App() {
           );
         })}
       </section>
-    </>
+    </div>
   );
 }
 
